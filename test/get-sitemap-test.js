@@ -22,11 +22,10 @@ tap.test('It requires url to be valid.', function(test) {
   });
 });
 
-tap.test('Returns error on error', function(test) {
+tap.test('Returns error on bad url', function(test) {
   var url = 'https://gummiballenssyltelabberifinnesikkeher.no';
-  var expectedErrorMessage = 'getaddrinfo ENOTFOUND gummiballenssyltelabberifinnesikkeher.no gummiballenssyltelabberifinnesikkeher.no:443';
   getSitemap(url, function (error, data){
-    tap.equal(error.message, expectedErrorMessage, expectedErrorMessage);
+    tap.ok(error, 'Url does not exist');
     test.done();
   });
 });
