@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/zrrrzzt/sitemap-to-array.svg?branch=master)](https://travis-ci.org/zrrrzzt/sitemap-to-array)
 [![Coverage Status](https://coveralls.io/repos/zrrrzzt/sitemap-to-array/badge.svg?branch=master&service=github)](https://coveralls.io/github/zrrrzzt/sitemap-to-array?branch=master)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 # sitemap-to-array
 Convert sitemap.xml to an array of objects.
 
