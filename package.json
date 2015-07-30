@@ -1,7 +1,7 @@
 {
   "name": "sitemap-to-array",
   "description": "Convert sitemap.xml to an array of objects",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "author": {
     "name": "Geir Gåsodden",

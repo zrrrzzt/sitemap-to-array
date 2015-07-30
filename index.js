@@ -4,18 +4,9 @@ var validUrl = require('valid-url')
 var getSitemap = require('./lib/get-sitemap')
 var convertData = require('./lib/convert-data')
 
-function sitemapToArray (options, callback) {
-
-  if (!options) {
-    return callback(new Error('Missing required input: options.'), null)
-  }
-
-  if (!options.data && !options.url) {
-    return callback(new Error('Missing required input: options.data or options.url.'), null)
-  }
-
-  if (options.url && !validUrl.isWebUri(options.url)) {
-    return callback(new Error('Invalid url: options.url.'), null)
+function sitemapToArray (sitemap, callback) {
+  if (!sitemap) {
+    return callback(new Error('Missing required input: sitemap.'), null)
   }
 
   function handleConversion (error, data) {
@@ -26,19 +17,18 @@ function sitemapToArray (options, callback) {
     }
   }
 
-  if (options.url) {
-    getSitemap(options.url, function (error, data) {
+  if (validUrl.isWebUri(sitemap)) {
+    getSitemap(sitemap, function (error, data) {
       if (error) {
         return callback(error, null)
       } else {
         convertData(data, handleConversion)
       }
     })
+  } else {
+    convertData(sitemap, handleConversion)
   }
 
-  if (options.data) {
-    convertData(options.data, handleConversion)
-  }
 }
 
 module.exports = sitemapToArray

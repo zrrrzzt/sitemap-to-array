@@ -14,23 +14,23 @@ $ npm install sitemap-to-array
 
 ## Usage
 
-Pass an options object with data or url to sitemap
+Pass a sitemap, either as data or an URL to the sitemap.xml.
 
+### Example with data
 ```javascript
-'use strict';
+'use strict'
 
-var fs = require('fs');
-var smta = require('sitemap-to-array');
-var data = fs.readFileSync('test/data/sitemap.xml', 'utf-8');
-var options = {data:data};
+var fs = require('fs')
+var smta = require('sitemap-to-array')
+var data = fs.readFileSync('test/data/sitemap.xml', 'utf-8')
 
-smta(options, function(error, result){
+smta(data, function (error, result) {
   if (error) {
-    console.error(error);
+    console.error(error)
   } else {
-    console.log(result);
+    console.log(result)
   }
-});
+})
 ```
 
 Returns
@@ -50,19 +50,21 @@ Returns
 ]
 ```
 
+### Example with URL
+
 ```javascript
-'use strict';
+'use strict'
 
-var smta = require('sitemap-to-array');
-var options = {url:'https://raw.githubusercontent.com/zrrrzzt/sitemap-to-array/master/test/data/sitemap.xml'};
+var smta = require('sitemap-to-array')
+var sitemapUrl = 'https://raw.githubusercontent.com/zrrrzzt/sitemap-to-array/master/test/data/sitemap.xml'
 
-smta(options, function(error, result){
+smta(sitemapUrl, function (error, result) {
   if (error) {
-    console.error(error);
+    console.error(error)
   } else {
-    console.log(result);
+    console.log(result)
   }
-});
+})
 ```
 
 Returns
