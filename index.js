@@ -28,7 +28,6 @@ function sitemapToArray (sitemap, callback) {
   } else {
     convertData(sitemap, handleConversion)
   }
-
 }
 
 module.exports = sitemapToArray
