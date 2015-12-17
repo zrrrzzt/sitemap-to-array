@@ -1,7 +1,7 @@
 {
   "name": "sitemap-to-array",
   "description": "Convert sitemap.xml to an array of objects",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "license": "MIT",
   "author": {
     "name": "Geir Gåsodden",
@@ -21,7 +21,7 @@
     "url": "http://github.com/zrrrzzt/sitemap-to-array/issues"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12.0"
   },
   "main": "index.js",
   "scripts": {
