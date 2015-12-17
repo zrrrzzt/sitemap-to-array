@@ -22,14 +22,26 @@ tap.test('It requires valid data.', function (test) {
   })
 })
 
-tap.test('It returns expected result.', function (test) {
+tap.test('It returns expected result for sitemap.', function (test) {
   var data = fs.readFileSync('test/data/sitemap.xml', 'utf-8')
   var expectedResult = require('./data/sitemap.json').toString()
   convertData(data, function (error, result) {
     if (error) {
       throw error
     }
-    tap.equal(result.toString(), expectedResult)
+    tap.equal(result.toString(), expectedResult, 'Sitemap OK')
+    test.done()
+  })
+})
+
+tap.test('It returns expected result for sitemapindex.', function (test) {
+  var data = fs.readFileSync('test/data/sitemapindex.xml', 'utf-8')
+  var expectedResult = require('./data/sitemapindex.json').toString()
+  convertData(data, function (error, result) {
+    if (error) {
+      throw error
+    }
+    tap.equal(result.toString(), expectedResult, 'Sitemapindex OK')
     test.done()
   })
 })
