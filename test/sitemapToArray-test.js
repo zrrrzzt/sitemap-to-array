@@ -15,7 +15,7 @@ tap.test('It requires a parameter: sitemap', function (test) {
 
 tap.test('It requires valid data.', function (test) {
   var sitemap = '<xml'
-  var expectedErrorMessage = 'Unclosed root tag\nLine: 0\nColumn: 4\nChar: '
+  var expectedErrorMessage = 'Unexpected end\nLine: 0\nColumn: 4\nChar: '
   sitemapToArray(sitemap, function (error, result) {
     tap.equal(error.message, expectedErrorMessage, expectedErrorMessage)
     test.done()

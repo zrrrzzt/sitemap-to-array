@@ -15,7 +15,7 @@ tap.test('It requires data.', function (test) {
 
 tap.test('It requires valid data.', function (test) {
   var data = '<xml'
-  var expectedErrorMessage = 'Unclosed root tag\nLine: 0\nColumn: 4\nChar: '
+  var expectedErrorMessage = 'Unexpected end\nLine: 0\nColumn: 4\nChar: '
   convertData(data, function (error, result) {
     tap.equal(error.message, expectedErrorMessage, expectedErrorMessage)
     test.done()
