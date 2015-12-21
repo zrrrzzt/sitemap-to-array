@@ -32,8 +32,7 @@
   },
   "dependencies": {
     "http-https": "^1.0.0",
-    "valid-url": "^1.0.9",
-    "xml2js": "^0.4.15"
+    "valid-url": "^1.0.9"
   },
   "devDependencies": {
     "coveralls": "^2.11.6",
