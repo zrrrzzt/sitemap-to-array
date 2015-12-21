@@ -31,7 +31,9 @@
     "setup": "npm install && node setup.js"
   },
   "dependencies": {
+    "duplexify": "^3.4.2",
     "http-https": "^1.0.0",
+    "is-stream": "^1.0.1",
     "sax": "^1.1.4",
     "valid-url": "^1.0.9"
   },

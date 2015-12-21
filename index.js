@@ -2,7 +2,7 @@
 
 var validUrl = require('valid-url')
 var getSitemap = require('./lib/get-sitemap')
-var convertData = require('./lib/convert-data')
+var convertSitemapData = require('./lib/convertSitemapData')
 
 function sitemapToArray (sitemap, callback) {
   if (!sitemap) {
@@ -22,11 +22,11 @@ function sitemapToArray (sitemap, callback) {
       if (error) {
         return callback(error, null)
       } else {
-        convertData(data, handleConversion)
+        convertSitemapData(data, handleConversion)
       }
     })
   } else {
-    convertData(sitemap, handleConversion)
+    convertSitemapData(sitemap, handleConversion)
   }
 }
 
