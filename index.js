@@ -42,3 +42,5 @@ function sitemapToArray (sitemap, callback) {
 }
 
 module.exports = sitemapToArray
+
+module.exports.stream = convertStream
