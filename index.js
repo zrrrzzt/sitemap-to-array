@@ -7,13 +7,12 @@ var streamify = require('streamify')
 var convertStream = require('./lib/convertSitemapData')
 
 function sitemapToArray (sitemap, callback) {
-
   if (!sitemap) {
     return callback(new Error('Missing required input: sitemap.'), null)
   }
 
   var list = []
-  var stream = false;
+  var stream = false
 
   if (validUrl.isWebUri(sitemap)) {
     stream = streamify()
@@ -38,7 +37,6 @@ function sitemapToArray (sitemap, callback) {
 
   stream
     .pipe(convertStream)
-
 }
 
 module.exports = sitemapToArray
