@@ -114,7 +114,7 @@ smtaStream.on('data', function (data) {
   console.log(data.toString())
 })
 
-http.get(sitemap, function(response) {
+http.get(sitemap, function (response) {
   response
     .pipe(smtaStream)
 })
