@@ -33,7 +33,6 @@
   "dependencies": {
     "duplexify": "^3.4.2",
     "http-https": "^1.0.0",
-    "is-stream": "^1.0.1",
     "sax": "^1.1.4",
     "streamifier": "^0.1.1",
     "streamify": "^0.2.5",

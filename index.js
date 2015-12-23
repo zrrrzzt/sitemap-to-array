@@ -13,6 +13,7 @@ function sitemapToArray (sitemap, callback) {
 
   var list = []
   var stream = false
+  var err = null
 
   if (validUrl.isWebUri(sitemap)) {
     stream = streamify()
@@ -28,11 +29,11 @@ function sitemapToArray (sitemap, callback) {
   })
 
   convertStream.on('end', function () {
-    return callback(null, list)
+    return callback(err, list)
   })
 
   convertStream.on('error', function (error) {
-    return callback(error, null)
+    err = error
   })
 
   stream
