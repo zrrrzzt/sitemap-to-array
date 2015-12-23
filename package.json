@@ -41,6 +41,6 @@
   "devDependencies": {
     "coveralls": "^2.11.6",
     "standard": "^5.4.1",
-    "tap": "^2.3.2"
+    "tap": "^2.3.4"
   }
 }
