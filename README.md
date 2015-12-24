@@ -24,7 +24,6 @@ cd into directory and run setup
 $ npm run setup
 ```
 
-
 ## Usage - callback
 
 Pass a sitemap, either as data or an URL to the sitemap.xml.
@@ -37,30 +36,24 @@ var fs = require('fs')
 var smta = require('sitemap-to-array')
 var data = fs.readFileSync('test/data/sitemap.xml', 'utf-8')
 
-smta(data, function (error, result) {
-  if (error) {
+smta(data, function (stream) {
+  stream.on('error', function (error) {
     console.error(error)
-  } else {
-    console.log(result)
-  }
+  })
+  stream.on('data', function (data) {
+    console.log(data.toString())
+  })
 })
 ```
 
 Returns
 
 ```javascript
-[ 
-  { loc: 'http://www.telemark.no/Vaare-tjenester',
-    lastmod: '2015-05-06T10:51:03+00:00' },
-  { loc: 'http://www.telemark.no/Vaare-tjenester/Kurs-og-konferanser',
-    lastmod: '2014-10-06T11:40:22+00:00' },
-  { loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse',
-    lastmod: '2015-03-13T07:35:30+00:00' },
-  { loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Paa-farta-til-skolen',
-    lastmod: '2015-05-24T15:56:56+00:00' },
-  { loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Alle-barn-sykler',
-    lastmod: '2015-05-22T13:46:26+00:00' } 
-]
+{"loc":"http://www.telemark.no/Vaare-tjenester","lastmod":"2015-05-06T10:51:03+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Kurs-og-konferanser","lastmod":"2014-10-06T11:40:22+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse","lastmod":"2015-03-13T07:35:30+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Paa-farta-til-skolen","lastmod":"2015-05-24T15:56:56+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Alle-barn-sykler","lastmod":"2015-05-22T13:46:26+00:00"}
 ```
 
 ### Example with URL
@@ -71,14 +64,41 @@ Returns
 var smta = require('sitemap-to-array')
 var sitemapUrl = 'https://raw.githubusercontent.com/zrrrzzt/sitemap-to-array/master/test/data/sitemap.xml'
 
-smta(sitemapUrl, function (error, result) {
+smta(sitemapUrl, function (stream) {
+  stream.on('error', function (error) {
+    console.error(error)
+  })
+  stream.on('data', function (data) {
+    console.log(data.toString())
+  })
+})
+```
+
+Returns
+
+```javascript
+{"loc":"http://www.telemark.no/Vaare-tjenester","lastmod":"2015-05-06T10:51:03+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Kurs-og-konferanser","lastmod":"2014-10-06T11:40:22+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse","lastmod":"2015-03-13T07:35:30+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Paa-farta-til-skolen","lastmod":"2015-05-24T15:56:56+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Alle-barn-sykler","lastmod":"2015-05-22T13:46:26+00:00"}
+```
+## Usage - callback - without stream
+
+'use strict'
+var smta = require('sitemap-to-array')
+var options = {
+  returnOnComplete: true
+}
+var sitemapUrl = 'https://raw.githubusercontent.com/zrrrzzt/sitemap-to-array/master/test/data/sitemap.xml'
+
+smta(sitemapUrl, options, function (error, list) {
   if (error) {
     console.error(error)
   } else {
-    console.log(result)
+    console.log(list)
   }
 })
-```
 
 Returns
 
@@ -97,7 +117,7 @@ Returns
 ]
 ```
 
-## Usage - stream
+## Usage - stream through
 
 pipe a stream of sitemap.xml to the module
 
@@ -124,16 +144,11 @@ http.get(sitemap, function (response) {
 returns
 
 ```javascript
-{ loc: 'http://www.telemark.no/Vaare-tjenester',
-  lastmod: '2015-05-06T10:51:03+00:00' }
-{ loc: 'http://www.telemark.no/Vaare-tjenester/Kurs-og-konferanser',
-  lastmod: '2014-10-06T11:40:22+00:00' }
-{ loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse',
-  lastmod: '2015-03-13T07:35:30+00:00' }
-{ loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Paa-farta-til-skolen',
-  lastmod: '2015-05-24T15:56:56+00:00' }
-{ loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Alle-barn-sykler',
-  lastmod: '2015-05-22T13:46:26+00:00' } 
+{"loc":"http://www.telemark.no/Vaare-tjenester","lastmod":"2015-05-06T10:51:03+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Kurs-og-konferanser","lastmod":"2014-10-06T11:40:22+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse","lastmod":"2015-03-13T07:35:30+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Paa-farta-til-skolen","lastmod":"2015-05-24T15:56:56+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Alle-barn-sykler","lastmod":"2015-05-22T13:46:26+00:00"}
 ```
 
 ### - Example from file
@@ -157,14 +172,9 @@ sitemap
 returns
 
 ```javascript
-{ loc: 'http://www.telemark.no/Vaare-tjenester',
-  lastmod: '2015-05-06T10:51:03+00:00' }
-{ loc: 'http://www.telemark.no/Vaare-tjenester/Kurs-og-konferanser',
-  lastmod: '2014-10-06T11:40:22+00:00' }
-{ loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse',
-  lastmod: '2015-03-13T07:35:30+00:00' }
-{ loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Paa-farta-til-skolen',
-  lastmod: '2015-05-24T15:56:56+00:00' }
-{ loc: 'http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Alle-barn-sykler',
-  lastmod: '2015-05-22T13:46:26+00:00' } 
+{"loc":"http://www.telemark.no/Vaare-tjenester","lastmod":"2015-05-06T10:51:03+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Kurs-og-konferanser","lastmod":"2014-10-06T11:40:22+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse","lastmod":"2015-03-13T07:35:30+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Paa-farta-til-skolen","lastmod":"2015-05-24T15:56:56+00:00"}
+{"loc":"http://www.telemark.no/Vaare-tjenester/Folkehelse/Tilbud-HEFRES/Alle-barn-sykler","lastmod":"2015-05-22T13:46:26+00:00"} 
 ```
