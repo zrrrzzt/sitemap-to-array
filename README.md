@@ -85,6 +85,7 @@ Returns
 ```
 ## Usage - callback - without stream
 
+```javascript
 'use strict'
 var smta = require('sitemap-to-array')
 var options = {
@@ -99,6 +100,7 @@ smta(sitemapUrl, options, function (error, list) {
     console.log(list)
   }
 })
+```
 
 Returns
 
