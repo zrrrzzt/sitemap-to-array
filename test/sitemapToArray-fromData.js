@@ -7,7 +7,10 @@ var sitemapToArray = require('../index')
 tap.test('It returns expected result from data.', function (test) {
   var sitemap = fs.readFileSync('test/data/sitemap.xml', 'utf-8')
   var expectedResult = require('./data/sitemap.json').toString()
-  sitemapToArray(sitemap, function (error, result) {
+  var options = {
+    returnOnComplete: true
+  }
+  sitemapToArray(sitemap, options, function (error, result) {
     if (error) {
       throw error
     }

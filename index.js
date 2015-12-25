@@ -12,8 +12,8 @@ function sitemapToArray (sitemap, options, callback) {
   }
 
   if (typeof options === 'function') {
-    callback = options;
-    options = {};
+    callback = options
+    options = {}
   }
 
   var returnOnComplete = options.returnOnComplete || false
