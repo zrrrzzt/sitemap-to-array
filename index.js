@@ -1,10 +1,10 @@
 'use strict'
 
-var validUrl = require('valid-url')
-var hh = require('http-https')
-var streamifier = require('streamifier')
-var streamify = require('streamify')
-var convertStream = require('./lib/convertSitemapData')
+const validUrl = require('valid-url')
+const hh = require('http-https')
+const streamifier = require('streamifier')
+const streamify = require('streamify')
+const convertStream = require('./lib/convertSitemapData')
 
 function sitemapToArray (sitemap, options, callback) {
   if (!sitemap) {
@@ -16,25 +16,25 @@ function sitemapToArray (sitemap, options, callback) {
     options = {}
   }
 
-  var returnOnComplete = options.returnOnComplete || false
-  var list = returnOnComplete ? [] : require('stream').PassThrough()
-  var stream = false
-  var err = null
+  const returnOnComplete = options.returnOnComplete || false
+  const list = returnOnComplete ? [] : require('stream').PassThrough()
+  let stream = false
+  let err = null
 
   if (validUrl.isWebUri(sitemap)) {
     stream = streamify()
-    hh.get(sitemap, function (response) {
+    hh.get(sitemap, response => {
       stream.resolve(response)
     })
   } else {
     stream = streamifier.createReadStream(sitemap)
   }
 
-  convertStream.on('data', function (data) {
+  convertStream.on('data', data => {
     list.push(returnOnComplete ? JSON.parse(data.toString()) : data)
   })
 
-  convertStream.on('end', function () {
+  convertStream.on('end', () => {
     if (returnOnComplete) {
       return callback(err, list)
     } else {
@@ -42,7 +42,7 @@ function sitemapToArray (sitemap, options, callback) {
     }
   })
 
-  convertStream.on('error', function (error) {
+  convertStream.on('error', error => {
     err = error
     if (!returnOnComplete) {
       list.emit('error', error)

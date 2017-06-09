@@ -1,7 +1,7 @@
 {
   "name": "sitemap-to-array",
   "description": "Convert sitemap.xml to an array or stream of objects",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "license": "MIT",
   "author": {
     "name": "Geir Gåsodden",
@@ -23,26 +23,26 @@
     "url": "http://github.com/zrrrzzt/sitemap-to-array/issues"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=4.8.3"
   },
   "main": "index.js",
   "scripts": {
     "test": "standard && tap --reporter=spec test/*.js",
     "coverage": "tap test/*.js --coverage",
     "coveralls": "tap --cov --coverage-report=lcov test/*.js && cat coverage/lcov.info | coveralls",
-    "setup": "npm install && node setup.js"
+    "setup": "npm install"
   },
   "dependencies": {
-    "duplexify": "^3.4.2",
-    "http-https": "^1.0.0",
-    "sax": "^1.1.4",
-    "streamifier": "^0.1.1",
-    "streamify": "^0.2.5",
-    "valid-url": "^1.0.9"
+    "duplexify": "3.5.0",
+    "http-https": "1.0.0",
+    "sax": "1.2.2",
+    "streamifier": "0.1.1",
+    "streamify": "0.2.8",
+    "valid-url": "1.0.9"
   },
   "devDependencies": {
-    "coveralls": "^2.11.6",
-    "standard": "^10.0.1",
-    "tap": "^10.1.0"
+    "coveralls": "2.13.1",
+    "standard": "10.0.2",
+    "tap": "10.3.3"
   }
 }
