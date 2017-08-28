@@ -37,12 +37,12 @@
     "http-https": "1.0.0",
     "sax": "1.2.4",
     "streamifier": "0.1.1",
-    "streamify": "0.2.8",
+    "streamify": "0.2.9",
     "valid-url": "1.0.9"
   },
   "devDependencies": {
     "coveralls": "2.13.1",
     "standard": "10.0.3",
-    "tap": "10.7.0"
+    "tap": "10.7.2"
   }
 }
