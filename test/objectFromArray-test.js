@@ -15,7 +15,7 @@ tap.throws(
   function () {
     objectFromArray()
   },
-  {message: 'No input. Input must be an array'},
+  { message: 'No input. Input must be an array' },
   'Throws if no input'
 )
 
@@ -23,6 +23,6 @@ tap.throws(
   function () {
     objectFromArray('123')
   },
-  {message: 'Input must be an array'},
+  { message: 'Input must be an array' },
   'Throws if input is not an array'
 )
