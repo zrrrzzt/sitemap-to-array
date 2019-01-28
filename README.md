@@ -20,10 +20,10 @@ From GitHub
 $ git clone git@github.com:zrrrzzt/sitemap-to-array.git
 ```
 
-cd into directory and run setup
+cd into directory and install dependencies
 
 ```sh
-$ npm run setup
+$ npm install
 ```
 
 ## Usage - callback
@@ -186,5 +186,3 @@ returns
 ## License
 
 [MIT](LICENSE)
-
-![Robohash image of sitemap-to-array](https://robots.kebabstudios.party/sitemap-to-array.png "Robohash image of sitemap-to-array")
