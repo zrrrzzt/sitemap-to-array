@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/zrrrzzt/sitemap-to-array",
   "engines": {
-    "node": ">=4.8.4"
+    "node": ">=6.16.0"
   },
   "main": "index.js",
   "scripts": {
