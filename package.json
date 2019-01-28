@@ -31,7 +31,6 @@
     "test": "standard && tap --reporter=spec test/*.js",
     "coverage": "tap test/*.js --coverage",
     "coveralls": "tap --cov --coverage-report=lcov test/*.js && cat coverage/lcov.info | coveralls",
-    "setup": "npm install",
     "standard-fix": "standard --fix"
   },
   "dependencies": {
