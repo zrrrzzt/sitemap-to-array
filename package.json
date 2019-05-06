@@ -34,7 +34,7 @@
     "standard-fix": "standard --fix"
   },
   "dependencies": {
-    "duplexify": "3.7.1",
+    "duplexify": "4.0.0",
     "http-https": "1.0.0",
     "sax": "1.2.4",
     "streamifier": "0.1.1",
